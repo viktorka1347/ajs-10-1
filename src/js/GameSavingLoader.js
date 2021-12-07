@@ -3,6 +3,8 @@ import read from "./reader";
 
 export default class GameSavingLoader {
     static async load() {
-        return JSON.parse(await json(await read()));
+        const response = await read();
+        const jsonResponse = await json(response);
+        return jsonResponse;
     }
 }

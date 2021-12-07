@@ -1,11 +1,11 @@
 import GameSavingLoader from "./GameSavingLoader";
 
-GameSavingLoader.load()
-    .then((saving) => {
-        // eslint-disable-next-line no-console
-        console.log(saving);
-    })
-    .catch((error) => {
-        // eslint-disable-next-line no-alert
-        alert(error);
-    });
+(async() => {
+    try {
+        const saving = await GameSavingLoader.load();
+        const object = JSON.parse(saving);
+        Object.getPrototypeOf(object);
+    } catch (error) {
+        throw new Error(error);
+    }
+})();
